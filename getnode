@@ -1,0 +1,40 @@
+#!/bin/bash
+
+ver=$1
+
+if [ $ver == "" ] 
+then
+ver=v0.4.12
+fi
+
+sudo apt-get install libssl-dev
+
+cd ~
+cd node
+
+git reset
+git checkout .
+git pull
+
+git checkout $ver
+
+export JOBS=2 # optional, sets number of parallel commands.
+
+rm -rf ~/local/
+mkdir ~/local
+
+./configure --prefix=$HOME/local/node
+make
+make install
+#export PATH=$HOME/local/node/bin:$PATH
+#echo 'export PATH=$HOME/local/node/bin:$PATH' >> ~/.bashrc
+curl http://npmjs.org/install.sh | sh
+
+
+npm install express
+npm install socket.io
+npm install markdown
+npm install jade
+npm install sqlite3
+
+

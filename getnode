@@ -31,10 +31,10 @@ make install
 curl http://npmjs.org/install.sh | sh
 
 
-npm install express
-npm install socket.io
-npm install markdown
-npm install jade
-npm install sqlite3
+npm install express -g
+npm install socket.io -g
+npm install markdown -g
+npm install jade -g
+npm install sqlite3 -g
 
 
